@@ -53,6 +53,7 @@ foreach ($result as $row2) {
           $tpl->assign("VOORNAAM",    $row2['voornaam']);
           $tpl->assign("ACHTERNAAM",  $row2['achternaam']);
           $tpl->assign("profileID",   $row2['persoonId']);
+          $tpl->assign("postId",      $row2['postId']);
         }
         elseif($row2['status'] == 0){
           $tpl->assign("OWNCONTENT", "Dit bericht is verwijderd.");

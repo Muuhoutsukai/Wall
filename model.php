@@ -143,8 +143,8 @@ function insertPost($content, $gebruiker){
 		$sql = "INSERT INTO post (content, gebruiker_id, status) VALUES (:content, :gebruiker, 1)";
 
 		$stmt = $db->prepare($sql);
-		$stmt->bindParam(':content', $content, PDO::PARAM_STR);
-		$stmt->bindParam(':gebruiker', $gebruiker, PDO::PARAM_INT);
+		$stmt->bindParam(':content', 	$content, PDO::PARAM_STR);
+		$stmt->bindParam(':gebruiker', 	$gebruiker, PDO::PARAM_INT);
 		$stmt->execute();
 }
 
@@ -153,9 +153,9 @@ function insertComment($content, $gebruiker, $postid){
   $gebruiker = $_SESSION["gebruiker_id"];
   $sql = "INSERT INTO comment (content, status, post_id, gebruiker_id) VALUES (:content, 1, :postId, :gebruiker)"; 
   $stmt = $db->prepare($sql);
-  $stmt->bindParam(':content', $content, PDO::PARAM_STR);
-     $stmt->bindParam(':postId', $postid, PDO::PARAM_INT);         
-     $stmt->bindParam(':gebruiker', $gebruiker, PDO::PARAM_INT);         
+  $stmt->bindParam(':content', 		$content, PDO::PARAM_STR);
+  $stmt->bindParam(':postId', 		$postid, PDO::PARAM_INT);         
+  $stmt->bindParam(':gebruiker', 	$gebruiker, PDO::PARAM_INT);         
   $stmt->execute();
 }
 
@@ -165,8 +165,8 @@ function editPost(){
 	
 			$stmt = $db->prepare($sql);
 
-			$stmt->bindParam(':content', $content, PDO::PARAM_STR);
-			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt->bindParam(':content', 	$content, PDO::PARAM_STR);
+			$stmt->bindParam(':id', 		$id, PDO::PARAM_INT);
 
 			$content = $_POST['content'];
 			$id = $_POST['id'];
@@ -188,6 +188,16 @@ function getComment($id){
     		WHERE post.id = $id";
 
   	return $db->query($sql);
+ }
+
+ function getCommentById($id){
+	global $db;
+	$sql="select id,gebruiker_id from comment where id=:id";
+	$stmt = $db->prepare($sql);
+	$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+	$stmt->execute(); 
+	$result=$stmt->fetch(PDO::FETCH_ASSOC);  
+	return $result;
  }
 
 function editComment($content, $id){

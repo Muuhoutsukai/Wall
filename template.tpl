@@ -277,11 +277,8 @@
 							</head>
 							<body>
 								<h1>Comment verwijderen</h1>
-								<p>Weet je zeker dat je deze wilt verwijderen?<p>
+								<p>Weet je zeker dat je de comment wilt verwijderen?<p>
 								<form action="index.php?actie=deleteComment&id={COMMENTID}" method="POST">
-
-									<label for="content">Content:</label>
-									<input type="text" name="content" id="content" value="{CONTENT}" disabled><br>
 
 									<input type="hidden" name="id" value="{ID}">
 									</br>
@@ -453,6 +450,35 @@
 	top: 75px;
 	right: 180px;
    }
+
+    div.comments{
+   		position: relative;
+   		top: 140px;
+   		left: 365px;
+   }
+
+   div.comment{
+   		position: relative;
+   		top: 137px;
+   		background-color: #eaa3eb;
+   		text-align: center;
+   		margin: 0 auto;
+   		border: 1px solid black;
+   		margin-bottom: 10px;
+   		width: 600px;
+   }
+
+   span.commentBy{
+   	z-index: 100;
+	position: relative;
+	top: 57px;
+	right: 160px;
+   }
+
+	a.commentByName{
+   	font-weight: bold;
+   	color: gray;
+   }
    
    </style>
    </head>
@@ -472,6 +498,21 @@
 	    <a class="button" href="index.php?actie=verwijderen&id={ID}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
 	</div>
     </div>
+
+<!-- START BLOCK : comments -->
+    <div class="comment">
+	    <span class="commentBy">Comment geplaatst door: <a class="commentByName"href="profile.php?id={profileID}">{VOORNAAM} {ACHTERNAAM}</a>
+	    </span>
+	    <div id="commentContent">{COMMENTS}</div></br>
+	    <a class="button" href="index.php?actie=editComment&id={COMMENTID}"><button><img src="png/underline6.png" alt="" height="10" width="10"></button></a>
+	    <a class="button" href="index.php?actie=deleteComment&id={COMMENTID}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
+    </div>
+<!-- END BLOCK : comments -->
+
+    <div class="comments">
+    	<a href="index.php?actie=addComment&postId={postId}">Comment plaatsen</a>
+    </div>
+
     <!-- END BLOCK : profilePost -->
 
 	<div id="profile">
@@ -758,7 +799,7 @@
     <a class="button" href="index.php?actie=verwijderen&id={ID}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
     </div>
 
-    <!-- START BLOCK : comments -->
+<!-- START BLOCK : comments -->
     <div class="comment">
 	    <span class="commentBy">Comment geplaatst door: <a class="commentByName"href="profile.php?id={profileID}">{VOORNAAM} {ACHTERNAAM}</a>
 	    </span>

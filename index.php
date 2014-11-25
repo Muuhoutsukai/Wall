@@ -77,7 +77,6 @@ switch ($actie) {
 
     $stmt->execute();
 
-    echo "Dit bericht is verwijderd.";
     header('location:index.php');
     }
 
@@ -144,17 +143,18 @@ switch ($actie) {
 
   case 'deleteComment':
     if(isset($_POST['ja'])){
+   $comment=getCommentById($_GET['id']);
+    echo gettype($comment);
 
     $id = $_GET['id'];
     $sql = "UPDATE comment 
             SET status = 0
             WHERE id = $id";
 
-    $stmt = $db->query($sql);
+   $stmt = $db->query($sql);
 
-    $stmt->execute();
+   $stmt->execute();
 
-    echo "Dit bericht is verwijderd.";
     header('location:index.php');
     }
 
@@ -162,16 +162,12 @@ switch ($actie) {
       header('location:index.php');
     } elseif (isset($_GET['id'])) {
 
-      $result = getComment($_GET['id']);
+      $row = getCommentById($_GET['id']);
 
-      foreach ($result as $row) {
-        if($row){
         $tpl->newBlock("deleteComment");
-        $tpl->assign("CONTENT",        $row['content']);
-        $tpl->assign("COMMENTID",      $row['id']);
+        $tpl->assign("COMMENTID",      $_GET['id']);
       }
-      }
-    }
+    
     else
     {
       header('location: index.php');
@@ -213,7 +209,6 @@ switch ($actie) {
           $tpl->assign("ACHTERNAAM",  $row2['achternaam']);
           $tpl->assign("COMMENTID",   $row2['commentId']);
           $tpl->assign("profileID",   $row2['persoonId']);
-          $tpl->assign("postId",          $row2['postId']);
         }
       elseif($row2['commentStatus'] == 0){
           $tpl->assign("COMMENTS",    "Dit bericht is verwijderd.");
