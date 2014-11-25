@@ -151,10 +151,9 @@ function insertPost($content, $gebruiker){
 function insertComment($content, $gebruiker, $postid){
   global $db;
   $gebruiker = $_SESSION["gebruiker_id"];
-  $sql = "INSERT INTO comment (content, datum, status, post_id, gebruiker_id) VALUES (:content, :date, 1, :postId, :gebruiker)"; 
+  $sql = "INSERT INTO comment (content, status, post_id, gebruiker_id) VALUES (:content, 1, :postId, :gebruiker)"; 
   $stmt = $db->prepare($sql);
   $stmt->bindParam(':content', $content, PDO::PARAM_STR);
-     $stmt->bindParam(':date', time(), PDO::PARAM_INT);
      $stmt->bindParam(':postId', $postid, PDO::PARAM_INT);         
      $stmt->bindParam(':gebruiker', $gebruiker, PDO::PARAM_INT);         
   $stmt->execute();
