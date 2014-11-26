@@ -642,7 +642,6 @@
    </style>
    </head>
    <body>
-   <h1>Welkom bij ~The Wall~</h1>
 
 <!-- START BLOCK : post -->
 
