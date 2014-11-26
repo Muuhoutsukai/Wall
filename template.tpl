@@ -305,14 +305,10 @@
 		<input type="password" name="password" id="password"><br>
 		
 		<label for="geslacht">Geslacht:</label>
-		<select name="geslacht">
-  			<option value="">Select...</option>
-  			<option value="M">Man</option>
-  			<option value="V">Vrouw</option>
-		</select></br>
+		<input type="text" name="geslacht" id="geslacht"><br>
 
 		<label for="geboortedatum">Geboortedatum:</label>
-		<input type="date" name="geboortedatum" id="geboortedatum"><br>
+		<input type="text" name="geboortedatum" id="geboortedatum"><br>
 
 		<label for="postcode">Postcode:</label>
 		<input type="text" name="postcode" id="postcode"><br>
@@ -583,15 +579,11 @@
 				<label>Achternaam:</label>
 				<input type="text" name="achternaam" value="{ACHTERNAAM}"></br>
 
-				<label>Geslacht:</label>
-				<select name="geslacht">
-  					<option value="">Select...</option>
-  					<option value="M">Man</option>
-  					<option value="V">Vrouw</option>
-				</select></br>
+				<label for="geslacht">Geslacht:</label>
+				<input type="text" name="geslacht" value="{GESLACHT}"><br>
 
 				<label>Geboortedatum:</label>
-				<input type="date" name="geboortedatum" value="{DOB}"></br>
+				<input type="text" name="geboortedatum" value="{DOB}"></br>
 
 				<label>Adres:</label>
 				<input type="text" name="adres" value="{ADRES}"></br>
