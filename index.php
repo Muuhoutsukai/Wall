@@ -143,8 +143,6 @@ switch ($actie) {
 
   case 'deleteComment':
     if(isset($_POST['ja'])){
-   $comment=getCommentById($_GET['id']);
-    echo gettype($comment);
 
     $id = $_GET['id'];
     $sql = "UPDATE comment 
@@ -165,7 +163,7 @@ switch ($actie) {
       $row = getCommentById($_GET['id']);
 
         $tpl->newBlock("deleteComment");
-        $tpl->assign("COMMENTID",      $_GET['id']);
+        $tpl->assign("COMMENTID", $_GET['id']);
       }
     
     else
@@ -190,7 +188,7 @@ switch ($actie) {
           $tpl->assign("VOORNAAM",    $row['voornaam']);
           $tpl->assign("ACHTERNAAM",  $row['achternaam']);
           $tpl->assign("profileID",   $row['persoon_id']);
-          $tpl->assign("postId",          $row['postId']);
+          $tpl->assign("postId",      $row['postId']);
         }
         elseif($row['status'] == 0){
           $tpl->assign("CONTENT",     "Dit bericht is verwijderd.");
@@ -198,8 +196,8 @@ switch ($actie) {
           $tpl->assign("ACHTERNAAM",  $row['achternaam']);
         }
 
-      $tpl->assign("postId",    $row['postId']);
-      $result2 = getComment($row['postId']);
+      $tpl->assign("postId", $row['postId']);
+      $result2 =  getComment($row['postId']);
 
       foreach ($result2 as $row2) {
         $tpl->newBlock("comments");
@@ -211,7 +209,7 @@ switch ($actie) {
           $tpl->assign("profileID",   $row2['persoonId']);
         }
       elseif($row2['commentStatus'] == 0){
-          $tpl->assign("COMMENTS",    "Dit bericht is verwijderd.");
+          $tpl->assign("COMMENTS",    "Deze comment is verwijderd.");
           $tpl->assign("VOORNAAM",    $row2['voornaam']);
           $tpl->assign("ACHTERNAAM",  $row2['achternaam']);
           $tpl->assign("COMMENTID",   $row2['commentId']);

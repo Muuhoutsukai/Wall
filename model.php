@@ -13,7 +13,7 @@ function login($email, $password){
 
 	$stmt->execute();
 
-	$_SESSION['email'] = $email;
+	$_SESSION['email']    = $email;
 	$_SESSION['password'] = $password;
 
 	return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -93,7 +93,7 @@ function getProfile($persoonid){
   	$stmt = $db->prepare($sql);
   	$stmt->bindParam(':persoonid', $persoonid, PDO::PARAM_INT);
  	$stmt->execute();
-  	return $stmt->fetch(PDO::FETCH_ASSOC); 
+  	return $stmt->fetch(PDO::FETCH_ASSOC);
  }
 
  function editProfile($voornaam, $achternaam, $geslacht, $geboortedatum, $adres, $postcode, $woonplaats, $telefoon, $mobiel, $id){
@@ -161,6 +161,7 @@ function insertComment($content, $gebruiker, $postid){
 
 function editPost(){
 			global $db;
+			$gebruiker = $_SESSION["gebruiker_id"];
 			$sql = "UPDATE post SET content=:content WHERE id=:id";
 	
 			$stmt = $db->prepare($sql);
@@ -236,7 +237,7 @@ function editComment($content, $id){
 }
 
 function deletePost($id){
-	global $db;
+ global $db;
  $id = $_GET['id'];
  $sql = "UPDATE comment SET status = '0' WHERE id = :id";
  $stmt = $db->prepare($sql);

@@ -32,16 +32,16 @@ $tpl->newBlock("profile");
 
 $row = getProfile($_GET['id']);
 if($row){
-	$tpl->assign("VOORNAAM", 	 $row['voornaam']);
+	$tpl->assign("VOORNAAM", 	   $row['voornaam']);
 	$tpl->assign("ACHTERNAAM", 	 $row['achternaam']);
-	$tpl->assign("GESLACHT", 	 $row['geslacht']);
-	$tpl->assign("DOB", 		 $row['geboortedatum']);
-	$tpl->assign("ADRES", 		 $row['adres']);
-	$tpl->assign("POSTCODE", 	 $row['postcode']);
+	$tpl->assign("GESLACHT", 	   $row['geslacht']);
+	$tpl->assign("DOB", 		     $row['geboortedatum']);
+	$tpl->assign("ADRES", 		   $row['adres']);
+	$tpl->assign("POSTCODE", 	   $row['postcode']);
 	$tpl->assign("WOONPLAATS",   $row['woonplaats']);
-	$tpl->assign("TELEFOON", 	 $row['telefoon']);
-	$tpl->assign("MOBIEL", 		 $row['mobiel']);
-	$tpl->assign("ID", 			 $row['persoonId']);
+	$tpl->assign("TELEFOON", 	   $row['telefoon']);
+	$tpl->assign("MOBIEL", 		   $row['mobiel']);
+	$tpl->assign("ID", 			     $row['persoonId']);
 }
 
 $result = profilePost($_GET['id']);
@@ -56,7 +56,9 @@ foreach ($result as $row2) {
           $tpl->assign("postId",      $row2['postId']);
         }
         elseif($row2['status'] == 0){
-          $tpl->assign("OWNCONTENT", "Dit bericht is verwijderd.");
+          $tpl->assign("OWNCONTENT",  "Dit bericht is verwijderd.");
+          $tpl->assign("VOORNAAM",    $row2['voornaam']);
+          $tpl->assign("ACHTERNAAM",  $row2['achternaam']);
         }
       $tpl->assign("ID", $row2['id']);
   }

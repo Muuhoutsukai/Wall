@@ -448,13 +448,13 @@
    	z-index: 100;
 	position: relative;
 	top: 75px;
-	right: 180px;
+	left: -170px;
    }
 
     div.comments{
    		position: relative;
    		top: 140px;
-   		left: 365px;
+   		left: 370px;
    }
 
    div.comment{
@@ -494,8 +494,8 @@
 	<div class="posts">
 	    <span class="postBy">Post geplaatst door: <a href="profile.php?id={profileID}">{VOORNAAM} {ACHTERNAAM}</a></span>
 	    <p id="content">{OWNCONTENT}<br></p>
-		<a class="button" href="index.php?actie=wijzigen&id={ID}"><button><img src="png/underline6.png" alt="" height="10" width="10"></button></a>
-	    <a class="button" href="index.php?actie=verwijderen&id={ID}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
+		<a class="button" href="index.php?actie=wijzigen&id={postId}"><button><img src="png/underline6.png" alt="" height="10" width="10"></button></a>
+	    <a class="button" href="index.php?actie=verwijderen&id={postId}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
 	</div>
     </div>
 
@@ -704,7 +704,7 @@
    div.comments{
    		position: relative;
    		top: 140px;
-   		left: 365px;
+   		left: 370px;
    }
 
    div.comment{
@@ -739,14 +739,14 @@
    	z-index: 100;
 	position: relative;
 	top: 85px;
-	right: 180px;
+	left: -170px;
    }
 
    span.commentBy{
    	z-index: 100;
 	position: relative;
 	top: 57px;
-	right: 160px;
+	left: -150px;
    }
 
    #content{
@@ -795,8 +795,8 @@
 	<div class="posts">
 		<span class="postBy">Post geplaatst door: <a class="postByName"href="profile.php?id={profileID}">{VOORNAAM} {ACHTERNAAM}</a></span>
 		<p id="content">{CONTENT}</br></p>
-		<a class="button" href="index.php?actie=wijzigen&id={ID}"><button><img src="png/underline6.png" alt="" height="10" width="10"></button></a>
-    <a class="button" href="index.php?actie=verwijderen&id={ID}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
+		<a class="button" href="index.php?actie=wijzigen&id={postId}"><button><img src="png/underline6.png" alt="" height="10" width="10"></button></a>
+    <a class="button" href="index.php?actie=verwijderen&id={postId}"><button><img src="png/clear5.png" alt="" height="10" width="10"></button></a>
     </div>
 
 <!-- START BLOCK : comments -->
